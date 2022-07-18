@@ -1,4 +1,13 @@
-# Code sample
+# Build & run
+## Requirements
+* Google test. Install with the following command (linux environment)
+```
+sudo apt-get install libgtest-dev
+```
+
+***
+
+# Enunciado: Code sample
 
 La muestra de código es libre, aunque debe cumplir unos requisitos. Al final hay algunas propuestas para aplicarlos. No tiene por qué ser ninguna de ellas, al final se trata de aplicar C++ moderno y hablar sobre la organización, arquitectura, diseño del código y de las estructuras y funcionalidades usadas.
 
@@ -24,7 +33,23 @@ Pequeña aplicación (en consola) que gestione:
 
 *****************************************************************************************************************
 
-## Requisitos
-# std::tuple
+## Apuntes
+### SOLID principles
+- Single Responsibility Principle
+    + A class should have one and only one reason to change
+
+- Open/Closed Principle 
+    + Open for extensions (new shapes) but closed for modification (area method)
+
+- Liskov substitution principle (LSP)
+    + Subtypes must be substitutable for their base types
+
+- Interface Segregation Principles (ISP)
+    + Keep interfaces as small as possible.
+
+- Dependency Inversion Principle (DIP)
+    + Depend upon abstractions (interfaces) rather than concrete classes
+
+### std::tuple
 
 

@@ -6,6 +6,7 @@ class GameLibrary
 {
 public:
     GameLibrary();
+    void Run();
 
 private:
     bool ParseLibrary(std::filesystem::path rootDir);

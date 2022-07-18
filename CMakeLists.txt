@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(CMS-test VERSION 0.1.0)
 
-include(CTest)
-enable_testing()
+set(ProjectName CMS)
 
-add_executable(CMS-test main.cpp)
+project(ProjectName VERSION 0.1.0)
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+add_subdirectory(GameLibrary)
+
+add_executable(${ProjectName} main.cpp)
+
+target_link_libraries(${ProjectName} gamelibrary)

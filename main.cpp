@@ -1,6 +1,7 @@
 #include <iostream>
+#include "GameLibrary/gamelibrary.h"
 
-int main(int, char**) {
+int main(int argc, char *argv[]) {
     std::cout <<    " __  __          _____                        _      _ _                          \n"
                     "|  \\/  |        / ____|                      | |    (_) |                         \n"
                     "| \\  / |_   _  | |  __  __ _ _ __ ___   ___  | |     _| |__  _ __ __ _ _ __ _   _ \n"
@@ -10,5 +11,8 @@ int main(int, char**) {
                     "         __/ |                                                               __/ |\n"
                     "         |___/                                                               |___/\n";
 
-                    
+    GameLibrary gamelibrary;
+    gamelibrary.Run();
+
+    return 0;
 }
