@@ -9,6 +9,11 @@ public:
     void Run();
 
 private:
-    bool ParseLibrary(std::filesystem::path rootDir);
+    void HandleUserInput();
+
+    void CreateLibrary(std::filesystem::path name);
+    bool CreateLibrary(std::string name);
+
+    bool ReadLibrary(std::filesystem::path rootDir);
     std::filesystem::path rootDir_;
 };

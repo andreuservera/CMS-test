@@ -1,9 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
-
-project(gamelibrary)
-
-enable_testing()
-
+#project(gamelibrary)
 file(GLOB Sources 
     *.cpp    
 )
@@ -11,6 +6,11 @@ file(GLOB Headers
     *.h
 )
 
+add_subdirectory(${CMAKE_SOURCE_DIR}/libs/pugixml build)
+
 add_library(gamelibrary STATIC ${Sources} ${Headers})
 
-add_subdirectory(test)
+target_link_libraries(
+    gamelibrary PUBLIC
+    pugixml
+)
