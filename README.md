@@ -1,9 +1,11 @@
 # Build & run
-## Requirements
-* Google test. Install with the following command (linux environment)
 ```
-sudo apt-get install libgtest-dev
+mkdir build
+cd build
+cmake ..
+make
 ```
+This creates 2 executables, one for the application and one for the tests.
 
 ***
 

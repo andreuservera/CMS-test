@@ -22,7 +22,6 @@ public:
 private:
     void InitializeXML();
 
-
     std::string name_;
     std::filesystem::path library_path_;
     double time_played_;
