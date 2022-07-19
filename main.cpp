@@ -1,6 +1,5 @@
 #include <iostream>
-//#include "GameLibrary/gamelibrary.h"
-//#include "pugixml.hpp"
+#include "GameLibrary/gamelibrary.h"
 
 int main(int argc, char *argv[]) {
     std::cout <<    " __  __          _____                        _      _ _                          \n"
@@ -12,8 +11,8 @@ int main(int argc, char *argv[]) {
                     "         __/ |                                                               __/ |\n"
                     "         |___/                                                               |___/\n";
 
-    //GameLibrary gamelibrary;
-    //gamelibrary.Run();
+    GameLibrary gamelibrary;
+    gamelibrary.Run();
 
     return 0;
 }
