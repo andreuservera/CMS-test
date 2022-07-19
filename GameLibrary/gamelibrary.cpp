@@ -28,12 +28,7 @@ void GameLibrary::Run()
     game2.Create(rootDir_ / library_name, game_name);
     AddGame(library_name, game2);
 
-    ListGames();
-}
-
-void GameLibrary::HandleUserInput()
-{
-
+    cli.HandleEvents();
 }
 
 bool GameLibrary::CreateLibrary(std::string name)
