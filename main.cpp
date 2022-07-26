@@ -1,5 +1,5 @@
 #include <iostream>
-#include "GameLibrary/gamelibrary.h"
+#include "GameLibrary/cli.h"
 
 int main(int argc, char *argv[]) {
     std::cout <<    " __  __          _____                        _      _ _                          \n"
@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
                     "         __/ |                                                               __/ |\n"
                     "         |___/                                                               |___/\n";
 
-    GameLibrary gamelibrary;
-    gamelibrary.Run();
+    Cli cli;
+    cli.Run();
 
     return 0;
 }

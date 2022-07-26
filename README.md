@@ -52,6 +52,21 @@ Pequeña aplicación (en consola) que gestione:
 - Dependency Inversion Principle (DIP)
     + Depend upon abstractions (interfaces) rather than concrete classes
 
-### std::tuple
 
+*****************************************************************************************************************
+# Mejoras
+## The rule of three/five/zero
+### Rule of three
+If a class requires any of:
+    - user-defined destructor,
+    - user-defined copy constructor,
+    -  user-defined copy assignment operator,
+
+ it almost certainly requires all three.
+
+### Rule of five
+
+
+# Todo:
+**default** & **delete** keywords in constructors
 

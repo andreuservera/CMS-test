@@ -4,23 +4,30 @@
 #include <vector>
 
 #include "game.h"
-#include "cli.h"
+
+
+// User should have a folder to store data in $HOME.
+// The name of the folder is MyGameLibrary
+// That is, the root dir should be $HOME/MyGameLibrary
 
 class GameLibrary
 {
 public:
     GameLibrary();
     void Run();
+    void AddGame(Game game);
 
 private:
-    bool CreateLibrary(std::string name);
-    void AddGame(std::string library_name, Game game);
+    std::filesystem::path root_dir_;
+
+    void SetRootDir();
+    bool CheckForMainFolder();
+    void CreateMainFolder();
+
+    //bool CreateLibrary();
     void ListGames();
 
     bool ReadLibrary(std::filesystem::path rootDir);
-    std::filesystem::path rootDir_;
 
     std::vector<Game> games_;
-
-    Cli cli;
 };

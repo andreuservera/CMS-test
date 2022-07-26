@@ -10,13 +10,14 @@ class Game
 {
 public:
     Game();
-    void Create(std::filesystem::path library_path, std::string name);
+    void Create(std::string name);
     void Update();
     void Parse(std::filesystem::path library_path);
     void PrintAttributes();
 
     void Play();
 
+    void SetName(std::string name);
     std::string GetName();
 
 private:

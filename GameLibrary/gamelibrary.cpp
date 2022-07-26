@@ -1,47 +1,68 @@
-#include <iostream>
-#include <fstream>
-
 #include "gamelibrary.h"
 #include "pugixml.hpp"
 
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <wordexp.h>
+
 namespace fs = std::filesystem;
+
+const std::string cLibraryName = "MyGameLibrary";
+const char * cPathToMainFolder = "$HOME/MyGameLibrary";
 
 GameLibrary::GameLibrary()
 {
-    rootDir_ = fs::path{"/home/andreu/Documents/repos/CommonManagementSolutions/"};
+    SetRootDir();
 }
+
+void GameLibrary::SetRootDir()
+{
+    wordexp_t p;
+    char** w;
+    wordexp(cPathToMainFolder , &p, 0 );
+    w = p.we_wordv;
+    root_dir_ = *w;
+    wordfree( &p );
+}
+
 
 void GameLibrary::Run()
 {
-    std::string library_name = "MyGameLibrary";
-    std::cout << "Current Directory: " << rootDir_ << std::endl;
-    CreateLibrary(library_name);
-
-    Game game;
-    std::string game_name = "Floppy Bird";
-
-    game.Create(rootDir_ / library_name, game_name);
-    AddGame(library_name, game);
-
-    game_name = "Minacraft";
-    Game game2;
-    game2.Create(rootDir_ / library_name, game_name);
-    AddGame(library_name, game2);
-
-    cli.HandleEvents();
+    bool main_folder_exists = CheckForMainFolder();
+    if (!main_folder_exists)
+    {
+        CreateMainFolder();
+    }
+    else
+    {
+        std::cout << "Main folder at: " << root_dir_ << "\n";
+    }
 }
 
-bool GameLibrary::CreateLibrary(std::string name)
+void GameLibrary::CreateMainFolder()
 {
-    fs::path path{rootDir_};
-    path /= name;
-    std::cout << "path to library: " << path << std::endl;
-    bool result = fs::create_directories(path);
-    
-    return result;
+    fs::create_directory(root_dir_);
+    std::cout << "Main folder created at: " << root_dir_ << "\n";
 }
 
-void GameLibrary::AddGame(std::string library_name, Game game)
+bool GameLibrary::CheckForMainFolder()
+{
+    return fs::exists(root_dir_);
+}
+
+//bool GameLibrary::CreateLibrary()
+//{
+//    fs::path path{cRootDir};
+//    fs::current_path(path);
+//    path /= cLibraryName;
+//    std::cout << "path to library: " << path << std::endl;
+//    bool result = fs::create_directory(path);
+//    
+//    return result;
+//}
+
+void GameLibrary::AddGame(Game game)
 {
     games_.push_back(game);
 
@@ -57,3 +78,4 @@ void GameLibrary::ListGames()
         std::cout << it->GetName() << std::endl;
     }
 }
+

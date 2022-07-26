@@ -11,10 +11,9 @@ Game::Game()
     std::cout << "New game object" << std::endl;
 }
 
-void Game::Create(fs::path library_path, std::string name)
+void Game::Create(std::string name)
 {
     name_ = Spaces2Underscores(name);
-    library_path_ = library_path;
     time_played_ = 0.0;
 
     InitializeXML();
@@ -67,6 +66,11 @@ void Game::PrintAttributes()
     std::cout << "name: " << name_ << std::endl;
     std::cout << "library: " << library_path_.filename() << std::endl;
     std::cout << "time played: " << time_played_ << std::endl;
+}
+
+void Game::SetName(std::string name)
+{
+    this->name_ = name;
 }
 
 std::string Game::GetName()
