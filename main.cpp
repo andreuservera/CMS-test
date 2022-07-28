@@ -1,7 +1,7 @@
 #include <iostream>
 #include "GameLibrary/cli.h"
 
-int main(int argc, char *argv[]) {
+int main() {
     std::cout <<    " __  __          _____                        _      _ _                          \n"
                     "|  \\/  |        / ____|                      | |    (_) |                         \n"
                     "| \\  / |_   _  | |  __  __ _ _ __ ___   ___  | |     _| |__  _ __ __ _ _ __ _   _ \n"

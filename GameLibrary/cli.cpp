@@ -36,10 +36,13 @@ void Cli::HandleEvents()
     }
 }
 
-void Cli::Process(std::string cmd)
+void Cli::Process(std::string& line)
 {
+    std::string cmd = line.substr(0, line.find(" "));
+
     if (cmd.compare("exit") == 0)
     {
+        std::cout << "EXITING..." << "\n";
         exit_ = true;
     }
     else if (cmd.compare("help") == 0)

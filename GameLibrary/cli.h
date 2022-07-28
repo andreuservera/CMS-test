@@ -13,7 +13,7 @@ public:
     void HandleEvents();
 
 private:
-    void Process(std::string cmd);
+    void Process(std::string& line);
     bool exit_;
 
     GameLibrary game_library_;
