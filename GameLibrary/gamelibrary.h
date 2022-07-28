@@ -14,7 +14,7 @@ class GameLibrary
 {
 public:
     GameLibrary();
-    void Run();
+    void Initialize();
     void AddGame(Game game);
 
 private:

@@ -1,3 +1,4 @@
+
 # Build & run
 ```
 mkdir build
@@ -7,6 +8,12 @@ make
 ```
 This creates 2 executables, one for the application and one for the tests.
 
+
+### Hint
+To clone the *googletest* git submodule you can use the **--recurse-submodules** option, for instance:
+```
+git clone --recurse-submodules -j8 https://github.com/andreuservera/CMS-test
+```
 ***
 
 # Enunciado: Code sample

@@ -11,11 +11,13 @@ add_subdirectory(libs/googletest)
 add_subdirectory(test)
 
 add_subdirectory(GameLibrary)
+add_subdirectory(utils)
 
 enable_testing()
 
 add_executable(${ProjectName} main.cpp)
 
-target_link_libraries(${ProjectName} gamelibrary)
-#target_link_libraries(${ProjectName} pugixml gamelibrary)
-#target_link_libraries(${ProjectName} gamelibrary)
+target_link_libraries(${ProjectName} 
+    gamelibrary
+    utils
+)

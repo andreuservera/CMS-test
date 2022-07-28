@@ -1,8 +1,21 @@
 #include <gtest/gtest.h>
 
-TEST(hello_test, BasicAssertion)
+#include <filesystem>
+
+#include "../GameLibrary/gamelibrary.h"
+#include "../utils/utils.h"
+
+TEST(gamelibrary, initialize)
 {
-    EXPECT_STRNE("hello", "world");
+    GameLibrary gamelibrary;
+    gamelibrary.Initialize();
+
+    std::filesystem::path root_dir = Utils::GetHomeFolder()
+                                    + "/"
+                                    + "MyGameLibrary";
+    bool result = std::filesystem::exists(root_dir);
+    
+    EXPECT_TRUE(result);
 }
 
 int main(int argc, char **argv) {

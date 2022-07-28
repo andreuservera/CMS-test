@@ -1,4 +1,3 @@
-#project(gamelibrary)
 file(GLOB Sources 
     *.cpp    
 )

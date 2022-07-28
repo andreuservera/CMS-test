@@ -6,10 +6,13 @@
 #include <cstdlib>
 #include <wordexp.h>
 
+#include "../utils/utils.h"
+
 namespace fs = std::filesystem;
 
+
 const std::string cLibraryName = "MyGameLibrary";
-const char * cPathToMainFolder = "$HOME/MyGameLibrary";
+
 
 GameLibrary::GameLibrary()
 {
@@ -18,16 +21,11 @@ GameLibrary::GameLibrary()
 
 void GameLibrary::SetRootDir()
 {
-    wordexp_t p;
-    char** w;
-    wordexp(cPathToMainFolder , &p, 0 );
-    w = p.we_wordv;
-    root_dir_ = *w;
-    wordfree( &p );
+    root_dir_ = Utils::GetHomeFolder() + "/" + cLibraryName;
 }
 
 
-void GameLibrary::Run()
+void GameLibrary::Initialize()
 {
     bool main_folder_exists = CheckForMainFolder();
     if (!main_folder_exists)
@@ -50,17 +48,6 @@ bool GameLibrary::CheckForMainFolder()
 {
     return fs::exists(root_dir_);
 }
-
-//bool GameLibrary::CreateLibrary()
-//{
-//    fs::path path{cRootDir};
-//    fs::current_path(path);
-//    path /= cLibraryName;
-//    std::cout << "path to library: " << path << std::endl;
-//    bool result = fs::create_directory(path);
-//    
-//    return result;
-//}
 
 void GameLibrary::AddGame(Game game)
 {

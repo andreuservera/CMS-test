@@ -24,7 +24,7 @@ void Cli::PrintHelp()
 
 void Cli::HandleEvents()
 {
-    game_library_.Run();
+    game_library_.Initialize();
     std::cout << "Type help to list available commands..." << std::endl;
 
     while (!exit_)
