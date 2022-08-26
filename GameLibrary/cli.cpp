@@ -38,7 +38,9 @@ void Cli::HandleEvents()
 
 void Cli::Process(std::string& line)
 {
-    std::string cmd = line.substr(0, line.find(" "));
+    std::string cmd = "";
+    std::string arg = "";
+    ParseCliInput(line, cmd, arg);
 
     if (cmd.compare("exit") == 0)
     {
@@ -58,5 +60,21 @@ void Cli::Process(std::string& line)
     else
     {
         std::cout << "Unknown command: " << cmd << std::endl;
+    }
+}
+
+void Cli::ParseCliInput(std::string& input, std::string& cmd, std::string& arg)
+{
+    size_t space_pos = input.find(" ");
+
+    cmd = input.substr(0, space_pos);
+
+    if (space_pos != -1)
+    {
+        arg = input.substr(space_pos + 1, input.back());
+    }
+    else
+    {
+        arg = "";
     }
 }
