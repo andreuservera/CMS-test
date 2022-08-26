@@ -3,8 +3,11 @@
 #include <iostream>
 #include "game.h"
 
+using namespace std;
+
 Cli::Cli() : exit_(0)
 {
+
 }
 
 void Cli::Run()
@@ -14,37 +17,38 @@ void Cli::Run()
 
 void Cli::PrintHelp()
 {
-    std::cout << std::endl;
-    std::cout << "Commands: "<< std::endl;
-    std::cout << "\t" << "addgame <gamename>" << std::endl
-        << "\t" << "deletegame <gamename>" << std::endl
-        << "\t" << "playgame <gamename>" << std::endl
-        << "\t" << "list" << std::endl << std::endl;
+    cout << endl;
+    cout << "Commands: "<< endl;
+    cout << "\t" << "addgame <gamename>" << endl
+        << "\t" << "deletegame <gamename>" << endl
+        << "\t" << "playgame <gamename>" << endl
+        << "\t" << "list" << endl << endl;
 }
 
 void Cli::HandleEvents()
 {
     game_library_.Initialize();
-    std::cout << "Type help to list available commands..." << std::endl;
+    cout << "Type help to list available commands..." << endl;
 
     while (!exit_)
     {
-        std::cout << ">>> ";
-        std::string line;
-        std::getline(std::cin, line);
+        cout << ">>> ";
+        string line;
+        getline(cin, line);
         Process(line);
+        command_sender_.ExecuteCommand();
     }
 }
 
-void Cli::Process(std::string& line)
+void Cli::Process(string& line)
 {
-    std::string cmd = "";
-    std::string arg = "";
+    string cmd = "";
+    string arg = "";
     ParseCliInput(line, cmd, arg);
 
     if (cmd.compare("exit") == 0)
     {
-        std::cout << "EXITING..." << "\n";
+        command_sender_.SetCommand(new CmdExit);
         exit_ = true;
     }
     else if (cmd.compare("help") == 0)
@@ -59,11 +63,11 @@ void Cli::Process(std::string& line)
     }
     else
     {
-        std::cout << "Unknown command: " << cmd << std::endl;
+        cout << "Unknown command: " << cmd << endl;
     }
 }
 
-void Cli::ParseCliInput(std::string& input, std::string& cmd, std::string& arg)
+void Cli::ParseCliInput(string& input, string& cmd, string& arg)
 {
     size_t space_pos = input.find(" ");
 
