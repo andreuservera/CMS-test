@@ -2,7 +2,7 @@
 
 #include <string>
 #include "gamelibrary.h"
-#include "command.h"
+#include "commands/command.h"
 
 class Cli
 {
@@ -10,7 +10,7 @@ public:
     Cli();
 
     void Run();
-    void PrintHelp();
+    //void PrintHelp();
     void HandleEvents();
 
 private:

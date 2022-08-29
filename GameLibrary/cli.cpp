@@ -15,16 +15,6 @@ void Cli::Run()
     HandleEvents();
 }
 
-void Cli::PrintHelp()
-{
-    cout << endl;
-    cout << "Commands: "<< endl;
-    cout << "\t" << "addgame <gamename>" << endl
-        << "\t" << "deletegame <gamename>" << endl
-        << "\t" << "playgame <gamename>" << endl
-        << "\t" << "list" << endl << endl;
-}
-
 void Cli::HandleEvents()
 {
     game_library_.Initialize();
@@ -53,7 +43,7 @@ void Cli::Process(string& line)
     }
     else if (cmd.compare("help") == 0)
     {
-        PrintHelp();
+        command_sender_.SetCommand(new CmdPrintHelp);
     }
     else if (cmd.compare("addgame") == 0)
     {

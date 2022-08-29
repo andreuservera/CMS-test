@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+using namespace std;
 
 class Command
 {
@@ -19,6 +20,7 @@ public:
     }
     void SetCommand(Command* cmd)
     {
+        delete this->cmd;
         this->cmd = cmd;
     }
 
@@ -37,4 +39,17 @@ class CmdExit : public Command
     {
         std::cout << "EXITING..." << "\n";
     };
+};
+
+class CmdPrintHelp : public Command
+{
+    void Execute() override
+    {
+        cout << endl;
+        cout << "Commands: "<< endl;
+        cout << "\t" << "addgame <gamename>" << endl
+            << "\t" << "deletegame <gamename>" << endl
+            << "\t" << "playgame <gamename>" << endl
+            << "\t" << "list" << endl << endl;
+    }
 };
