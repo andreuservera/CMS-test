@@ -16,6 +16,8 @@ public:
     GameLibrary();
     void Initialize();
     void AddGame(Game game);
+    std::vector<Game> GetGames(){ return games_; };
+    std::vector<Game>* GetGamesPtr(){ return &games_; }
 
 private:
     std::filesystem::path root_dir_;

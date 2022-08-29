@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 #include "game.h"
+#include "commands/gamelibrarycommands.h"
 
 using namespace std;
 
@@ -48,9 +49,7 @@ void Cli::Process(string& line)
     }
     else if (cmd.compare("addgame") == 0)
     {
-        Game game;
-        game.Create("some_name");
-        game_library_.AddGame(game);
+        command_sender_.SetCommand(make_unique<CmdAddGame>(std::move(arg)));
     }
     else
     {

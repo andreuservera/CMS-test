@@ -7,6 +7,7 @@
 #include <wordexp.h>
 
 #include "../utils/utils.h"
+#include "commands/command.h"
 
 namespace fs = std::filesystem;
 

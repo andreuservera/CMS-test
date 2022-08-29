@@ -15,10 +15,15 @@ add_subdirectory(utils)
 
 enable_testing()
 
-add_compile_options(-Wall -Wextra -pedantic -Werror -fsanitize=address -static-libasan)
 
+## Use for Address Sanitizer
+add_compile_options(-Wall -Wextra -pedantic -Werror -fsanitize=address -static-libasan)
 set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address")
 set (CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address -static-libasan")
+## Use for Valgrind
+#add_compile_options(-Wall -Wextra -pedantic -Werror)
+#set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+#set (CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG}")
 
 add_executable(${ProjectName} main.cpp)
 

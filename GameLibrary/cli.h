@@ -10,7 +10,6 @@ public:
     Cli();
 
     void Run();
-    //void PrintHelp();
     void HandleEvents();
 
 private:
