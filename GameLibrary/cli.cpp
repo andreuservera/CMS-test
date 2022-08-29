@@ -1,6 +1,7 @@
 #include "cli.h"
 
 #include <iostream>
+#include <memory>
 #include "game.h"
 
 using namespace std;
@@ -38,12 +39,12 @@ void Cli::Process(string& line)
 
     if (cmd.compare("exit") == 0)
     {
-        command_sender_.SetCommand(new CmdExit);
+        command_sender_.SetCommand(make_unique<CmdExit>());
         exit_ = true;
     }
     else if (cmd.compare("help") == 0)
     {
-        command_sender_.SetCommand(new CmdPrintHelp);
+        command_sender_.SetCommand(make_unique<CmdPrintHelp>());
     }
     else if (cmd.compare("addgame") == 0)
     {

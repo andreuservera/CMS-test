@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 
 using namespace std;
 
@@ -14,23 +15,18 @@ public:
 class CommandSender
 {
 public:
-    ~CommandSender()
+    void SetCommand(unique_ptr<Command> cmd)
     {
-        delete cmd;
-    }
-    void SetCommand(Command* cmd)
-    {
-        delete this->cmd;
-        this->cmd = cmd;
+        this->cmd_ = move(cmd);
     }
 
     void ExecuteCommand()
     {
-        cmd->Execute();
+        cmd_->Execute();
     }
 
 private:
-    Command *cmd;
+    unique_ptr<Command> cmd_;
 };
 
 class CmdExit : public Command
